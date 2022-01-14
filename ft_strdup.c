@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 12:21:31 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/01/14 17:00:21 by aboudoun         ###   ########.fr       */
+/*   Created: 2021/11/07 12:23:40 by aboudoun          #+#    #+#             */
+/*   Updated: 2022/01/14 19:59:37 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minitalk.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strdup(char *src)
 {
-	int	i;
-	int	s;
-	int	n;
+	int		i;
+	char	*dup;
 
-	s = 1;
+	i = ft_strlen(src);
+	dup = (char *) malloc ((i * sizeof(char)) + 1);
+	if (!dup)
+		return (NULL);
 	i = 0;
-	n = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str [i] == '\f'
-		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\n')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (src[i])
 	{
-		if (str[i] == '-')
-			s = -s;
+		dup[i] = src[i];
 		i++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9') && str[i])
-	{
-		n = n * 10 + ((int)str[i] - '0');
-		i++;
-	}
-	return (n * s);
+	dup[i] = '\0';
+	return (dup);
 }

@@ -1,6 +1,6 @@
 #include"minitalk.h"
 
-static int check_error(int argc, char **argv, int pid)
+static void check_error(int argc, char **argv, int pid)
 {
 	int i;
 
@@ -11,16 +11,34 @@ static int check_error(int argc, char **argv, int pid)
 			exit(1);
 		i++;
 	}
-	if (argc != 3 || pid < 0)
+	if (argc != 3)
 		exit(1);
 	
 }
 
+// void ft_send_message(char *str,int Pid)
+// {}
 int		main(int argc, char **argv)
 {
 	int pid;
+	int bit;
+	int i;
 	char *str;
 
 	pid = ft_atoi(argv[1]);
+	bit = 8;
+	i = -1;
 	check_error(argc, argv, pid);
+	str = ft_strdup(argv[2]);
+	while(str[++i])
+	{
+		while(bit--)
+		{
+			if ((str[i] >> bit) & 1)
+				kill(SIGUSR1, pid);
+			else
+				kill(SIGUSR2, pid);
+		}
+	}
+	free(str);
 }

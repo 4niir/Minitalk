@@ -6,13 +6,13 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 10:58:22 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/01/14 15:37:07 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/01/14 19:59:35 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minitalk.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
 	int		i;
 	char	*ptr;
