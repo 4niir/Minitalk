@@ -3,11 +3,12 @@
 #define MINITALK_H
 
 # include<stdlib.h>
-# include<stdlib.h>
 # include<stdarg.h>
 # include<unistd.h>
+#include <signal.h>
+#include <stdio.h>
 
-
+char 	*ft_strdup(char *src);
 char 	*ft_strchr(char *str, int c);
 int 	ft_atoi(char *str);
 int 	ft_strlen(char *str);

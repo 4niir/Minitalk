@@ -6,13 +6,13 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 12:21:31 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/01/14 17:00:21 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:32:56 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minitalk.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int	i;
 	int	s;

@@ -16,8 +16,6 @@ static void check_error(int argc, char **argv, int pid)
 	
 }
 
-// void ft_send_message(char *str,int Pid)
-// {}
 int		main(int argc, char **argv)
 {
 	int pid;
@@ -38,6 +36,7 @@ int		main(int argc, char **argv)
 				kill(SIGUSR1, pid);
 			else
 				kill(SIGUSR2, pid);
+			usleep(100);
 		}
 	}
 	free(str);
