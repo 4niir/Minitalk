@@ -11,8 +11,8 @@ static void check_error(int argc, char **argv, int pid)
 			exit(1);
 		i++;
 	}
-	if (argc != 3)
-		exit(1);
+	 if (argc != 3)
+	 	exit(1);
 	
 }
 
@@ -25,19 +25,31 @@ int		main(int argc, char **argv)
 
 	pid = ft_atoi(argv[1]);
 	bit = 8;
-	i = -1;
+	i = 0;
 	check_error(argc, argv, pid);
 	str = ft_strdup(argv[2]);
-	while(str[++i])
+	while(str[i])
 	{
 		while(bit--)
 		{
 			if ((str[i] >> bit) & 1)
-				kill(SIGUSR1, pid);
+				kill(pid, SIGUSR1);
 			else
-				kill(SIGUSR2, pid);
-			usleep(100);
+				kill(pid, SIGUSR2);
 		}
+		i++;
 	}
-	free(str);
+	// free(str);
 }
+// int	main(int argc, char *argv[])
+// {
+//    int	pid;
+
+//    if (argc != 2)
+//    {
+//    	printf("client: invalid arguments\n");
+//    	exit(EXIT_FAILURE);
+//    }
+//    pid = atoi(argv[1]);
+//    kill(pid, SIGUSR1);
+//    return (0);

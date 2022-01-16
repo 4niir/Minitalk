@@ -3,13 +3,16 @@
 #define MINITALK_H
 
 # include<stdlib.h>
+#include <sys/types.h>  /* various type definitions, like pid_t         */
+#include <signal.h>     /* signal name macros, and the kill() prototype */
 # include<stdarg.h>
 # include<unistd.h>
 #include <signal.h>
 #include <stdio.h>
 
 char 	*ft_strdup(char *src);
-char 	*ft_strchr(char *str, int c);
+int ft_atoi_base(const char *str, int str_base);
+char *ft_strchr(char *str, int c);
 int 	ft_atoi(char *str);
 int 	ft_strlen(char *str);
 int 	ft_printf(const char *s, ...);
