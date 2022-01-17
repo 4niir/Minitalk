@@ -1,35 +1,36 @@
 #include"minitalk.h"
 
 void	signal_handler(int sign)
-{
+{ 
+	static int c = 0;
+	static int bit = 0;
+	int s;
+	
 	if (sign == SIGUSR1)
 	{
-		ft_printf("1");
+		c = (c << 1) | 1;
+		bit++;
 	}
-	
-	else if (sign == SIGUSR2)
+	if (sign == SIGUSR2)
 	{
-		ft_printf("0");
+		c = (c << 1);
+		bit++;
 	}
-	// char str[7];
-	// int bit = 0;
-	// int s;
-
+	if (bit == 8)
+	{
+	//	str[8] = '\0';
+		write(1, &c, 1);
+		bit = 0;
+		c = 0;
+	}
 	// if (sign == SIGUSR1)
 	// {
-	// 	str[bit] = '0';
-	// 	bit++;
+	// 	ft_printf("1");
 	// }
-	// if (sign == SIGUSR2)
+	
+	// else if (sign == SIGUSR2)
 	// {
-	// 	str[bit] = '1';
-	// 	bit++;
-	// }
-	// if (bit == 7)
-	// {
-	// 	s = ft_atoi_base(str, 2);
-	// 	ft_printf("%c", s);
-	// 	bit = 0;
+	// 	ft_printf("0");
 	// }
 }
 

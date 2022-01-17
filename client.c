@@ -30,7 +30,8 @@ int		main(int argc, char **argv)
 	str = ft_strdup(argv[2]);
 	while(str[i])
 	{
-		while(bit--)
+		bit = 8;
+		while (bit--)
 		{
 			if ((str[i] >> bit) & 1)
 				kill(pid, SIGUSR1);
@@ -40,7 +41,7 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
-	// free(str);
+	 free(str);
 }
 // int	main(int argc, char *argv[])
 // {

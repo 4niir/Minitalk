@@ -11,7 +11,6 @@
 #include <stdio.h>
 
 char 	*ft_strdup(char *src);
-int ft_atoi_base(const char *str, int str_base);
 char *ft_strchr(char *str, int c);
 int 	ft_atoi(char *str);
 int 	ft_strlen(char *str);
