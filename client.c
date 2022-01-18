@@ -6,13 +6,19 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:50:17 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/01/17 18:08:19 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/01/18 23:43:37 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minitalk.h"
 
-static void	check_error(int argc, char **argv, int pid)
+static void	signal_handler(int sign)
+{
+	if (sign == SIGUSR1)
+		ft_printf("\nbrqiya wadha\n\n");
+}
+
+static void	check_error(int argc, char **argv)
 {
 	int	i;
 
@@ -20,37 +26,57 @@ static void	check_error(int argc, char **argv, int pid)
 	while (argv[1][i])
 	{
 		if (!ft_strchr("0123456789", argv[1][i]))
+		{
+			ft_printf("try a new id");
 			exit(1);
+		}
 		i++;
 	}
 	if (argc != 3)
+	{
+		ft_printf("incorect number of arguments");
 		exit(1);
+	}
 }
 
-int	main(int argc, char **argv)
+static void	last_message(int id, int bit)
 {
-	int		pid;
-	int		bit;
-	int		i;
-	char	*str;
+	while (bit)
+	{
+		kill(id, SIGUSR2);
+		usleep(700);
+		bit--;
+	}
+}
 
-	pid = ft_atoi(argv[1]);
-	bit = 8;
+static void	send_signal(int id, char *str)
+{
+	int	i;
+	int	bit;
+
 	i = 0;
-	check_error(argc, argv, pid);
-	str = ft_strdup(argv[2]);
 	while (str[i])
 	{
 		bit = 8;
 		while (bit--)
 		{
 			if ((str[i] >> bit) & 1)
-				kill(pid, SIGUSR1);
+				kill(id, SIGUSR1);
 			else
-				kill(pid, SIGUSR2);
-			usleep(100);
+				kill(id, SIGUSR2);
+			usleep(700);
 		}
 		i++;
 	}
-	free (str);
+	last_message(id, 8);
+}
+
+int	main(int argc, char **argv)
+{
+	int	id;
+
+	signal(SIGUSR1, signal_handler);
+	id = ft_atoi(argv[1]);
+	check_error(argc, argv);
+	send_signal(id, argv[2]);
 }
