@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:50:17 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/04 12:22:35 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:13:11 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	signal_handler(int sign)
 {
 	if (sign == SIGUSR1)
-		ft_printf("\nmessage received\n\n");
+		ft_printf("\nreceived\n\n");
 }
 
 static void	check_error(int argc, char **argv)

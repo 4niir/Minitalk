@@ -13,6 +13,7 @@ SRC_CLIENT = $(COMMON_FILES) client.c
 SRC_SERVER = $(COMMON_FILES) server.c
 COBJ = $(SRC_CLIENT:%.c=%.o)
 SOBJ = $(SRC_SERVER:%.c=%.o)
+OBJS = $(COBJ) $(SOBJ)
 
 all : $(SERVER) $(CLIENT)
 
@@ -29,7 +30,7 @@ $(CLIENT) : $(COBJ)
 	@echo "$(GREEN)" "compiling $^"
 
 clean:
-	@rm -rf *.o *.gch
+	@rm -rf $(OBJS) *.gch
 	@echo "$(RED)" "cleaning..."
 
 fclean : clean
