@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:52:51 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/01/18 23:12:56 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:05:29 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ int	main(void)
 
 	id = (int) getpid();
 	ft_printf("server id : %d\n", id);
-	//signals.sa_handler = &signal_handler;
-	//sigemptyset(&signals.sa_mask);
 	signals.sa_sigaction = &signal_handler;
-	//signals.sa_flags = 0;*/
 	while (1)
 	{
 		sigaction(SIGUSR1, &signals, NULL);
