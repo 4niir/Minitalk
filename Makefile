@@ -18,11 +18,11 @@ OBJS = $(COBJ) $(SOBJ)
 all : $(SERVER) $(CLIENT)
 
 $(SERVER): $(SOBJ)
-	@$(CC) $(CFLAGS) -o $(SERVER) $(SRC_SERVER) 
+	@$(CC) $(CFLAGS) -o $@ $(SRC_SERVER) 
 	@echo "$(GREEN)" "compiling server"
 
 $(CLIENT) : $(COBJ)
-	@$(CC) $(CFLAGS) -o $(CLIENT) $(SRC_CLIENT)
+	@$(CC) $(CFLAGS) -o $@ $(SRC_CLIENT)
 	@echo "$(GREEN)" "compiling client"
 
 %.o : %.c minitalk.h
