@@ -27,7 +27,7 @@ $(CLIENT) : $(COBJ)
 
 %.o : %.c minitalk.h
 	@$(CC) $(CFLAGS) $^ -c
-	@echo "$(GREEN)" "compiling $^"
+	@echo "$(GREEN)" "compiling $<"
 
 clean:
 	@rm -rf $(OBJS) *.gch
