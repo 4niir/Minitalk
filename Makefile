@@ -14,15 +14,18 @@ SRC_SERVER = $(COMMON_FILES) server.c
 COBJ = $(SRC_CLIENT:%.c=%.o)
 SOBJ = $(SRC_SERVER:%.c=%.o)
 OBJS = $(COBJ) $(SOBJ)
+NAME = minitalk
 
-all : $(SERVER) $(CLIENT)
+all : $(NAME)
+
+$(NAME): $(SERVER) $(CLIENT)
 
 $(SERVER): $(SOBJ)
-	@$(CC) $(CFLAGS) -o $@ $(SRC_SERVER) 
+	@$(CC) $(CFLAGS) -o $(SERVER) $(SRC_SERVER) 
 	@echo "$(GREEN)" "compiling server"
 
 $(CLIENT) : $(COBJ)
-	@$(CC) $(CFLAGS) -o $@ $(SRC_CLIENT)
+	@$(CC) $(CFLAGS) -o $(CLIENT) $(SRC_CLIENT)
 	@echo "$(GREEN)" "compiling client"
 
 %.o : %.c minitalk.h

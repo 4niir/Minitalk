@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:50:17 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/04 16:18:05 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:43:24 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ static void	send_signal(int id, char *str)
 	while (str[i])
 	{
 		bit = 8;
-		while (bit--)
+		while (bit)
 		{
+			bit--;
 			if ((str[i] >> bit) & 1)
 				kill(id, SIGUSR1);
 			else
