@@ -42,3 +42,5 @@ fclean : clean
 
 re : fclean all
 	@echo "$(PURPLE)" "remaking"
+
+.PHONY: all clean fclean re
