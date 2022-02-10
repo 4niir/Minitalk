@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboudoun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 17:50:17 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/10 19:11:22 by aboudoun         ###   ########.fr       */
+/*   Created: 2022/02/10 18:58:54 by aboudoun          #+#    #+#             */
+/*   Updated: 2022/02/10 18:58:57 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minitalk.h"
+
+static void	signal_handler(int sign)
+{
+	if (sign == SIGUSR1)
+		ft_printf("\nmessage received\n\n");
+}
 
 static void	check_error(int argc, char **argv)
 {
@@ -33,6 +39,16 @@ static void	check_error(int argc, char **argv)
 	}
 }
 
+static void	last_message(int id, int bit)
+{
+	while (bit)
+	{
+		kill(id, SIGUSR2);
+		usleep(700);
+		bit--;
+	}
+}
+
 static void	send_signal(int id, char *str)
 {
 	int	i;
@@ -52,14 +68,15 @@ static void	send_signal(int id, char *str)
 		}
 		i++;
 	}
+	last_message(id, 8);
 }
 
 int	main(int argc, char **argv)
 {
 	int	id;
 
+	signal(SIGUSR1, signal_handler);
 	id = ft_atoi(argv[1]);
 	check_error(argc, argv);
 	send_signal(id, argv[2]);
-	return (0);
 }
