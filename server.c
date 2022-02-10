@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:52:51 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/09 19:41:46 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:18:49 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,16 @@ void	signal_handler(int sign, siginfo_t *info, void *context)
 {
 	static int	c = 0;
 	static int	bit = 0;
-
+	static int client_pid;
+	
+	if(!client_pid)
+		client_pid = info->si_pid;
+	if (client_pid != info -> si_pid)
+	{
+		c = 0;
+		bit = 0;
+		client_pid = info->si_pid;
+	}
 	(void)context;
 	c = (c << 1) | (sign == SIGUSR1);
 	bit++;
