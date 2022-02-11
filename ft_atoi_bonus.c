@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 10:58:22 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/11 16:52:13 by aboudoun         ###   ########.fr       */
+/*   Created: 2021/11/07 12:21:31 by aboudoun          #+#    #+#             */
+/*   Updated: 2022/02/11 17:15:31 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minitalk.h"
+#include"minitalk_bonus.h"
 
-char	*ft_strchr(char *str, int c)
+int	ft_atoi(char *str)
 {
-	int		i;
-	char	*ptr;
+	int	i;
+	int	n;
 
-	ptr = (char *) str;
 	i = 0;
-	while (ptr[i] != (char)c)
+	n = 0;
+	while ((str[i] >= '0' && str[i] <= '9') && str[i])
 	{
-		if (!ptr[i])
-			return (NULL);
+		n = n * 10 + ((int)str[i] - '0');
 		i++;
 	}
-	return (ptr + i);
+	return (n);
 }

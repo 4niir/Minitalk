@@ -6,13 +6,13 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:59:23 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/10 19:00:16 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/10 20:26:12 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minitalk.h"
+#include"minitalk_bonus.h"
 
-void	signal_handler(int sign, siginfo_t *info, void *context)
+static void	signal_handler(int sign, siginfo_t *info, void *context)
 {
 	static int	c = 0;
 	static int	bit = 0;

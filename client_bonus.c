@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboudoun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:58:54 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/10 18:58:57 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:28:34 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minitalk.h"
+#include"minitalk_bonus.h"
 
 static void	signal_handler(int sign)
 {
@@ -27,7 +27,7 @@ static void	check_error(int argc, char **argv)
 	{
 		if (!ft_strchr("0123456789", argv[1][i]))
 		{
-			ft_printf("wrong id");
+			ft_printf("wrongopo id");
 			exit(1);
 		}
 		i++;
