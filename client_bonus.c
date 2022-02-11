@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:58:54 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/02/11 15:28:34 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/02/11 18:58:28 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	check_error(int argc, char **argv)
 	{
 		if (!ft_strchr("0123456789", argv[1][i]))
 		{
-			ft_printf("wrongopo id");
+			ft_printf("wrong id");
 			exit(1);
 		}
 		i++;
